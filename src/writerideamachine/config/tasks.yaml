@@ -1,0 +1,45 @@
+brainstorming_task:
+  description: >
+    Create a story's full plot points, from start to finish, based on the prompt: {prompt}
+  expected_output: >
+    A list with 30 bullet points of the most relevant story events and character backstories
+  agent: brainstormer
+
+analysis_task:
+  description: >
+    Review the list you were provided by the Brainstormer and summarize the points.
+    Make sure the summary retains the original story idea.
+  expected_output: >
+    A 300 word summary 
+  agent: research_analyst
+
+copyrighting_task:
+  description: >
+    Conduct a thorough research about the summary you received from the Research Analyst.
+    Make sure you flag any large similarities between the summary and well-known stories from books and movies.
+  expected_output: >
+    A 5 bullet point list of any movies and books that the summary matches, if any. The list should be in order of most similar to least similar.
+  agent: copyright_specialist
+
+publishing_task:
+  description: >
+    Given the list you received from the Copyright Specialist, research the top entry.
+    Give the entry a 'similarity percentage' and decide whether the story should be written.
+  expected_output: >
+    A yes if the 'similarity percentage' is under 50% or a no if the 'similarity percentage' is above or equal to 50%
+  agent: publisher
+
+writing_task:
+  description: >
+    If the Publisher has said yes, write a short story based on the summary given by the Research Analyst
+  expected_output: >
+    A 1000 word short story
+  agent: writer
+
+proofreading_task:
+  description: >
+    Take the Writer's short story file and scan it for any typos or grammatical errors.
+    Make sure you correct anything you find and save the updated story to a new file called 'brainstormList.txt' using the SaveToFileTool tool.
+  expected_output: >
+    A proofread version of the writer's story, saved as a .txt file in the outputs directory
+  agent: proofreader
